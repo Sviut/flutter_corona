@@ -43,6 +43,7 @@ class APIService {
         }
       }
     }
+    throw response;
   }
 
   static Map<Endpoint, String> _responseJsonKeys = {
