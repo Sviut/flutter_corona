@@ -29,22 +29,30 @@ class EndpointCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cardData = _cardsData[endpoint];
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Text(
-                _cardsData[endpoint],
+                cardData.title,
                 style: Theme.of(context).textTheme.headline6,
               ),
-              Text(
-                value != null ? value.toString() : '',
-                style: Theme.of(context).textTheme.headline5,
-              )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Image.asset(cardData.assetName),
+                  Text(
+                    value != null ? value.toString() : '',
+                    style: Theme.of(context).textTheme.headline5,
+                  )
+                ],
+              ),
             ],
           ),
         ),
