@@ -9,18 +9,25 @@ class EndpointCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Row(
-        children: <Widget>[
-          Text(
-            'Cases',
-            style: Theme.of(context).textTheme.headline2,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                'Cases',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(
+                value != null ? value.toString() : '',
+                style: Theme.of(context).textTheme.headline4,
+              )
+            ],
           ),
-          Text(
-            value != null ? value.toString() : '',
-            style: Theme.of(context).textTheme.headline2,
-          )
-        ],
+        ),
       ),
     );
   }
