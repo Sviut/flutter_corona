@@ -43,15 +43,22 @@ class EndpointCard extends StatelessWidget {
                 cardData.title,
                 style: Theme.of(context).textTheme.headline6,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Image.asset(cardData.assetName),
-                  Text(
-                    value != null ? value.toString() : '',
-                    style: Theme.of(context).textTheme.headline5,
-                  )
-                ],
+              SizedBox(
+                height: 4,
+              ),
+              SizedBox(
+                height: 52,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Image.asset(cardData.assetName),
+                    Text(
+                      value != null ? value.toString() : '',
+                      style: Theme.of(context).textTheme.headline5,
+                    )
+                  ],
+                ),
               ),
             ],
           ),
