@@ -1,6 +1,7 @@
 import 'package:corona_flutter/app/repositories/endpoints_data.dart';
 import 'package:corona_flutter/app/services/api.dart';
 import 'package:corona_flutter/app/services/api_service.dart';
+import 'package:corona_flutter/app/services/endpoint_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
@@ -10,7 +11,7 @@ class DataRepository {
 
   String _accessToken;
 
-  Future<int> getEndpointData(Endpoint endpoint) async {
+  Future<EndpointData> getEndpointData(Endpoint endpoint) async {
     try {
       if (_accessToken == null) {
         _accessToken = await this.apiService.getAccessToken();
