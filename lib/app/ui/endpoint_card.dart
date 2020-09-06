@@ -14,12 +14,17 @@ class EndpointCard extends StatelessWidget {
   final Endpoint endpoint;
   final int value;
 
-  static Map<Endpoint, String> _cardTitles = {
-    Endpoint.cases: 'Cases',
-    Endpoint.casesSuspected: 'Suspected cases',
-    Endpoint.casesConfirmed: 'Confirmed cases',
-    Endpoint.deaths: 'Deaths',
-    Endpoint.recovered: 'Recovered'
+  static Map<Endpoint, EndpointCardData> _cardsData = {
+    Endpoint.cases:
+        EndpointCardData('Cases', 'assets/count.png', Color(0xFFFFF492)),
+    Endpoint.casesSuspected: EndpointCardData(
+        'Suspected cases', 'assets/suspect.png', Color(0xFFEEDA28)),
+    Endpoint.casesConfirmed: EndpointCardData(
+        'Confirmed cases', 'assets/fever.png', Color(0xFFE99600)),
+    Endpoint.deaths:
+        EndpointCardData('Deaths', 'assets/death.png', Color(0xFFE40000)),
+    Endpoint.recovered:
+        EndpointCardData('Recovered', 'assets/patient.png', Color(0xFF70A901)),
   };
 
   @override
@@ -33,7 +38,7 @@ class EndpointCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                _cardTitles[endpoint],
+                _cardsData[endpoint],
                 style: Theme.of(context).textTheme.headline6,
               ),
               Text(
