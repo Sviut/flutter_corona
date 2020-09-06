@@ -28,6 +28,22 @@ class DataRepository {
     }
   }
 
+  Future<EndpointsData> getAllEndpointsData() async {
+    try {
+      if (_accessToken == null) {
+        _accessToken = await this.apiService.getAccessToken();
+      }
+
+      return await _getAllEndpointsData();
+    } on Response catch (response) {
+      if (response.statusCode == 401) {
+        _accessToken = await this.apiService.getAccessToken();
+        return await _getAllEndpointsData();
+      }
+      rethrow;
+    }
+  }
+
   Future<EndpointsData> _getAllEndpointsData() async {
     final values = await Future.wait([
       apiService.getEndpointData(
