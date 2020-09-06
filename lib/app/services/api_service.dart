@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:corona_flutter/app/services/api.dart';
 
@@ -21,4 +22,20 @@ class APIService {
     }
     throw response;
   }
+
+  Future<int> getEndpointData({
+    @required String accessToken,
+    @required Endpoint endpoint,
+  }) async {
+    final uri = api.endpointUri(endpoint);
+    final response = await http.get(
+      uri.toString(),
+      headers: { "Authorization": "Bearer $accessToken" }
+    );
+    if (response.statusCode == 200) {
+
+    }
+  }
+
+  
 }
